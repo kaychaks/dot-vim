@@ -15,7 +15,10 @@ let g:fzf_layout = { 'down': '30%' }
 let g:fzf_buffers_jump = 1
 
 " command to search in src
-command! -bang SourceCodeFiles call fzf#vim#files('~/developer/src', <bang>0)
+" mac
+"command! -bang SourceCodeFiles call fzf#vim#files('~/developer/src', <bang>0)
+" precision
+command! -bang SourceCodeFiles call fzf#vim#files('~/Developer/src', <bang>0)
 
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'

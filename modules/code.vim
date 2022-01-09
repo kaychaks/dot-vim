@@ -52,4 +52,4 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " ensure that coc always uses latest node
-let g:coc_node_path = "/usr/local/bin/node"
+let g:coc_node_path = "/home/kc/.config/nvm/versions/node/v14.18.1/bin/node"
