@@ -4,6 +4,8 @@ local function fzf_by_os ()
 
 	if string.lower(os) == "linux" then
 		return "~/.nix-profile/share/vim-plugins/fzf"
+	elseif string.lower(os) == "darwin" then
+		return "/usr/local/Cellar/fzf/0.32.0"
 	else
 		return ""
 	end
