@@ -13,6 +13,19 @@ end
 
 require('packer').startup(function(use) 
 	use 'wbthomason/packer.nvim'
+	use  { "williamboman/mason.nvim", 
+		config = function()
+			require("mason").setup()
+		end
+	}
+
+	-- color scheme
+	use 'bradcush/base16-nvim'
+
+	-- lsp
+  use "williamboman/mason-lspconfig.nvim"
+  use "neovim/nvim-lspconfig"
+	use 'simrat39/rust-tools.nvim'
 
 	-- fuzzy finder
 	use 'airblade/vim-rooter' 

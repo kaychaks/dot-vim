@@ -14,3 +14,7 @@ require('keys')
 require('ui')
 require('vars')
 require('opts')
+
+
+-- lang settings
+require('lang/rust')
