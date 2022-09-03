@@ -47,3 +47,14 @@ map("n", "<Leader>O", "O<Esc>j", { noremap = true })
 -- FZF
 map("n", "<Leader>ff", ":Files<CR>", { noremap = true })
 map("n", "<Leader>bb", ":Buffers<CR>", { noremap = true })
+
+-- clipboard
+map("v", "<Leader>y", "\"+y<CR>", { noremap = true })
+map("v", "<Leader>d", "\"+d<CR>", { noremap = true })
+map("n", "<Leader>p", "\"+p<CR>", { noremap = true })
+map("v", "<Leader>p", "\"+p<CR>", { noremap = true })
+
+-- quit vi
+map("n", "<C-q>", ":confirm qa<CR>", { noremap = true })
+map("v", "<C-q>", "<Esc>:confirm qa<CR>", { noremap = true })
+map("i", "<C-q>", "<Esc>:confirm qa<CR>", { noremap = true })
