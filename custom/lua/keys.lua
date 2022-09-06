@@ -1,60 +1,84 @@
 -- key mappings
 
+local Lib = require("lib")
+
 -- renaming apis
 local g = vim.g
-local map = vim.api.nvim_set_keymap
 
 -- leader mapping
 g.mapleader = " "
 
--- quick escape
-map("i", "jk", "<Esc>", {})
+Lib.inoremap({
 
--- quick save
-map("n", "<Leader>w", ":w<CR>", { nowait = true })
-map("i", "<C-s>", "<Esc>:w<CR>a", {})
+	-- quick escape
+	["jk"] = "<Esc>",
 
--- quick quit
-map("n", "<Leader>q", ":q<CR>", { noremap = true })
+	-- quick save
+	["<C-s>"] = "<Esc>:w<CR>a",
 
--- reload buffer
-map("n", "<Leader>r", ":source %<CR>", { noremap = true, silent = true })
+	-- quit vi
+	["<C-q>"] = "<Esc>:confirm qa<CR>",
+})
 
--- quick change to last buffer
-map("n", "<Leader><Leader>", ":b#<CR>", { silent = true })
+Lib.vnoremap({
 
--- switch buffers
-map("n", "<Leader>]", ":bn<CR>", {})
-map("n", "<Leader>[", ":bp<CR>", {})
+	-- clipboard functions
+	["<Leader>y"] = '"+y<CR>',
+	["<Leader>d"] = '"+d<CR>',
+	["<Leader>p"] = '"+p<CR>',
 
--- create new windows
-map("n", "<Leader>\\", ":vsp<CR>:wincmd l<CR>", { noremap = true })
-map("n", "<Leader>-", ":sp<CR>:wincmd j<CR>", { noremap = true })
+	-- quit vi
+	["<C-q>"] = "<Esc>:confirm qa<CR>",
+})
 
--- switch windows
-map("n", "<Leader>wl", ":wincmd l<CR>", { noremap = true, silent = true })
-map("n", "<Leader>wj", ":wincmd j<CR>", { noremap = true, silent = true })
-map("n", "<Leader>wh", ":wincmd h<CR>", { noremap = true, silent = true })
-map("n", "<Leader>wk", ":wincmd k<CR>", { noremap = true, silent = true })
+Lib.nnoremap({
+	-- quick save
+	["<Leader>s"] = ":w<CR>",
 
--- begin help
-map("n", "<Leader>h", ":help ", { noremap = true })
+	-- kill buffer
+	["<Leader>q"] = ":Bdelete<CR>",
 
--- new line below & above without moving from present line
-map("n", "<Leader>o", "o<Esc>k", { noremap = true })
-map("n", "<Leader>O", "O<Esc>j", { noremap = true })
+	-- reload
+	["<Leader>r"] = ":source %<CR>",
 
--- FZF
-map("n", "<Leader>ff", ":Files<CR>", { noremap = true })
-map("n", "<Leader>bb", ":Buffers<CR>", { noremap = true })
+	-- quick load last buffer
+	["<Leader><Leader>"] = ":b#<CR>",
 
--- clipboard
-map("v", "<Leader>y", "\"+y<CR>", { noremap = true })
-map("v", "<Leader>d", "\"+d<CR>", { noremap = true })
-map("n", "<Leader>p", "\"+p<CR>", { noremap = true })
-map("v", "<Leader>p", "\"+p<CR>", { noremap = true })
+	-- navigate buffer
+	["<Leader>]"] = ":bn<CR>",
+	["<Leader>["] = ":bp<CR>",
 
--- quit vi
-map("n", "<C-q>", ":confirm qa<CR>", { noremap = true })
-map("v", "<C-q>", "<Esc>:confirm qa<CR>", { noremap = true })
-map("i", "<C-q>", "<Esc>:confirm qa<CR>", { noremap = true })
+	-- split window
+	["<Leader>\\"] = ":vsp<CR>:wincmd l<CR>",
+	["<Leader>-"] = ":sp<CR>:wincmd j<CR>",
+
+	-- navigate window
+	["<Leader>wl"] = ":wincmd l<CR>",
+	["<Leader>wj"] = ":wincmd j<CR>",
+	["<Leader>wh"] = ":wincmd h<CR>",
+	["<Leader>wk"] = ":wincmd k<CR>",
+
+	-- move window
+	["<Leader>wL"] = "<C-w>L",
+	["<Leader>wJ"] = "<C-w>J",
+	["<Leader>wH"] = "<C-w>H",
+	["<Leader>wK"] = "<C-w>K",
+
+	-- quick help
+	["<Leader>h"] = ":help ",
+
+	-- quick blank lines
+	["<Leader>o"] = "o<Esc>k",
+	["<Leader>O"] = "O<Esc>j",
+
+	-- FZF functions
+	["<Leader>ff"] = ":Files<CR>",
+	["<Leader>bb"] = ":Buffers<CR>",
+	["<Leader>gs"] = ":Rg<CR>",
+
+	-- clipboard
+	["<Leader>p"] = '"+p<CR>',
+
+	-- quit vim
+	["<C-q>"] = ":confirm qa<CR>",
+})

@@ -1,15 +1,15 @@
 -- some common settings across languages
 
+local Lib = require("lib")
 local Common = {}
 
+function Common.on_attach(client, buffnr)
+	local bufopts = { buffer = buffnr }
 
-function Common.on_attach(client, buffnr) 
-	local map = vim.keymap.set
-	local bufopts = { noremap = true, silent = true, buffer = buffnr }
-
-	map('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-	map('n', '<space>cf', vim.lsp.buf.formatting, bufopts)
-	
+	Lib.nnoremap({
+		["<space>ca"] = { vim.lsp.buf.code_action, bufopts },
+		["<space>cf"] = { vim.lsp.buf.formatting_sync, bufopts },
+	})
 end
 
 return Common
