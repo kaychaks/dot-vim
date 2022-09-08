@@ -9,6 +9,8 @@
 -- Things will be across various Lua modules. And this file will be mostly dealing with
 -- importing all those modules.
 
+require "impatient"
+
 require "plugins"
 require "keys"
 require "ui/common"

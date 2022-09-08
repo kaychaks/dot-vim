@@ -13,6 +13,10 @@ end
 
 require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
+
+	--impatient (to fasten lua module loading)
+	use 'lewis6991/impatient.nvim'
+
 	use({
 		"williamboman/mason.nvim",
 		config = function()
@@ -27,6 +31,10 @@ require("packer").startup(function(use)
 
 	-- sorround
 	use("tpope/vim-surround")
+
+	-- autopair
+	use("jiangmiao/auto-pairs")
+
 	-- tabs & buffers
 	use({
 		"akinsho/bufferline.nvim",
