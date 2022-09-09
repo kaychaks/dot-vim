@@ -5,7 +5,7 @@ local function fzf_by_os()
 	if string.lower(os) == "linux" then
 		return "~/.nix-profile/share/vim-plugins/fzf"
 	elseif string.lower(os) == "darwin" then
-		return "/usr/local/Cellar/fzf/0.32.0"
+		return "/usr/local/Cellar/fzf/0.33.0"
 	else
 		return ""
 	end
@@ -15,7 +15,7 @@ require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 
 	--impatient (to fasten lua module loading)
-	use 'lewis6991/impatient.nvim'
+	use("lewis6991/impatient.nvim")
 
 	use({
 		"williamboman/mason.nvim",
@@ -34,6 +34,14 @@ require("packer").startup(function(use)
 
 	-- autopair
 	use("jiangmiao/auto-pairs")
+
+	-- which key
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({})
+		end,
+	})
 
 	-- tabs & buffers
 	use({
