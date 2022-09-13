@@ -2,10 +2,9 @@
 
 local Lib = {}
 
-local map = vim.api.nvim_set_keymap
 local kmap = vim.keymap.set
 
-function is_empty(t)
+local function is_empty(t)
 	local next = next
 	if next(t) == nil then
 		return true
@@ -14,7 +13,7 @@ function is_empty(t)
 	end
 end
 
-function noremap(flag, key, value)
+local function noremap(flag, key, value)
 	local opts = { noremap = true, silent = true }
 	local type = type
 	local v_type = type(value)

@@ -21,7 +21,11 @@ require "opts"
 -- lang settings
 require "lang/common"
 require "lang/rust"
+require "lang/tsserver"
+require "lang/tailwindcss"
+require "lang/lua"
 
 -- other
 require "tabs"
 require "ui/filetree"
+require "completion"
