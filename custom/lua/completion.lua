@@ -9,6 +9,16 @@ local function has_words_before()
 end
 
 cmp.setup({
+	enabled = function()
+		-- disable completion in comments
+		local context = require("cmp.config.context")
+		-- keep command mode completion enabled when cursor is in a comment
+		if vim.api.nvim_get_mode().mode == "c" then
+			return true
+		else
+			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
+		end
+	end,
 	preselect = cmp.PreselectMode.None,
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -87,5 +97,58 @@ cmp.setup({
 			"i",
 			"s",
 		}),
+	},
+
+	sources = {
+		{
+			name = "nvim_lsp",
+			priority = 1000,
+		},
+		{
+			name = "nvim_lsp_signature_help",
+			priority = 900,
+		},
+		{
+			name = "nvim_lsp_document_symbol",
+			priority = 800,
+		},
+		{
+			name = "crates",
+			priority = 800,
+			keyword_length = 4,
+		},
+		{ name = "npm", keyword_length = 4 },
+		{
+			name = "nvim_lua",
+			priority = 750,
+		},
+		{
+			name = "path",
+			priority = 500,
+		},
+		{
+			name = "buffer",
+			priority = 500,
+			keyword_length = 3,
+		},
+		{
+			name = "latex_symbols",
+		},
+	},
+})
+
+cmp.setup.cmdline("/", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "nvim_lsp_document_symbol" },
+		{ name = "buffer" },
+	},
+})
+
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "path" },
+		{ name = "cmdline" },
 	},
 })

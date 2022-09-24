@@ -154,7 +154,10 @@ require("packer").startup(function(use)
 
 	use("hrsh7th/nvim-cmp", {
 		event = "InsertEnter",
-		after = "lspkind"
+		after = "lspkind",
+		requires = {
+			{ "kdheepak/cmp-latex-symbols" },
+		},
 	})
 
 	use("hrsh7th/cmp-buffer", {
@@ -165,7 +168,37 @@ require("packer").startup(function(use)
 		after = "nvim-cmp",
 	})
 
-	use("hrsh7th/cmp-path", {
+	use("hrsh7th/cmp-nvim-lua", {
+		after = "nvim-cmp",
+	})
+
+	use("hrsh7th/cmp-nvim-lsp", {
+		after = "nvim-cmp",
+	})
+
+	use("hrsh7th/cmp-nvim-lsp-signature-help", {
+		after = "nvim-cmp",
+	})
+
+	use("hrsh7th/cmp-nvim-lsp-document-symbol", {
+		after = "nvim-cmp",
+	})
+
+	use({
+		"saecki/crates.nvim",
+		tag = "v0.2.1",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("crates").setup()
+		end,
+		after = "nvim-cmp",
+	})
+
+	use({
+		"David-Kunz/cmp-npm",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
 		after = "nvim-cmp",
 	})
 

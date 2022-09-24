@@ -4,6 +4,7 @@ require("lspconfig")["sumneko_lua"].setup({
 	on_attach = function(client, buf)
 		Util.on_attach(client, buf, true)
 	end,
+	capabilities = Util.capabilities(),
 	settings = {
 		Lua = {
 			diagnostics = {
