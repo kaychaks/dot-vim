@@ -1,11 +1,7 @@
 local saga = require("lspsaga")
 local Lib = require("lib")
 
-saga.init_lsp_saga({
-	server_filetype_map = {
-		typescript = "typescript",
-	},
-})
+saga.setup({})
 
 Lib.nnoremap({
 	["K"] = "<Cmd>Lspsaga hover_doc<CR>",
