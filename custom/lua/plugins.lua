@@ -140,7 +140,7 @@ require("packer").startup(function(use)
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
 		config = function()
-			require("trouble").setup()
+			require("trouble").setup({})
 			require("lang/diagnostics")
 		end,
 	})
@@ -229,7 +229,21 @@ require("packer").startup(function(use)
 
 	-- git
 	use("tpope/vim-fugitive")
+	-- fugitive for github
 	use({ "tpope/vim-rhubarb", requires = { "tpope/vim-fugitive" } })
+	-- git blame
+	use({
+		"dinhhuy258/git.nvim",
+		config = function()
+			require("git").setup({
+				keymaps = {
+					blame = "<Leader>gb",
+					quit_blame = "q",
+					blame_commit = "<CR>",
+				},
+			})
+		end,
+	})
 
 	-- lsp
 	use({

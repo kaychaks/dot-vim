@@ -37,4 +37,5 @@ Lib.nnoremap({
 	["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>" },
 	["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>" },
 	["<leader>xR"] = { "<cmd>TroubleToggle lsp_references<cr>" },
+	["<leader>xt"] = { "<cmd>TroubleToggle lsp_type_definitions<cr>" },
 })
