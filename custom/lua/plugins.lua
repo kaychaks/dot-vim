@@ -149,6 +149,9 @@ require("packer").startup(function(use)
 	use("RRethy/nvim-base16")
 
 	-- UI
+	
+	-- commenting
+	use("tpope/vim-commentary")
 
 	-- sorround
 	use("tpope/vim-surround")
