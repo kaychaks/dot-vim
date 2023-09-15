@@ -3,7 +3,18 @@
 
 local Lib = require("lib")
 
-require("nvim-tree").setup()
+require("nvim-tree").setup({
+	sort_by = "modification_time",
+	view = {
+		adaptive_size = true,
+	},
+	renderer = {
+		icons = {
+			git_placement = "after",
+			padding = "  ",
+		},
+	},
+})
 
 Lib.nnoremap({
 	["<C-F>"] = ":NvimTreeToggle<CR>",

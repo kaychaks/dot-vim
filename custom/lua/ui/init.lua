@@ -1,4 +1,8 @@
 -- settings related to user interface improvements
+ 
+-- disable netrw at the very start of your init.lua (strongly advised)
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 vim.scriptencoding = "utf-8"
 
@@ -29,7 +33,7 @@ vim.go.wildmenu = true
 vim.go.wildmode = "list:longest"
 -- https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim#L310
 vim.go.wildignore =
-	".hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor"
+".hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp,publish/*,intermediate/*,*.o,*.hi,Zend,vendor"
 
 --tabs
 vim.go.shiftwidth = 2
@@ -64,13 +68,13 @@ vim.go.smartcase = true
 vim.go.autowriteall = true
 
 -- shell
-vim.go.shell = 'fish'
+vim.go.shell = "fish"
 
 -- smart indent
 vim.go.breakindent = true
 
 -- go down to subfolders when finding files
-vim.go.path = '**'
+vim.go.path = "**"
 
 -- highlights
 vim.go.cursorline = true
@@ -79,15 +83,15 @@ vim.go.wildoptions = "pum"
 vim.go.pumblend = 5
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
-vim.cmd [[
+vim.cmd([[
  augroup highlight_yank
   autocmd!
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
   augroup END
-]]
+]])
 
 -- copy text to gloal clipboard
-vim.opt.clipboard:append { 'unnamedplus' }
+vim.opt.clipboard:append({ "unnamedplus" })
 
 -- Add asterisks in block comments
-vim.opt.formatoptions:append('r')
+vim.opt.formatoptions:append("r")

@@ -9,11 +9,10 @@
 -- Things will be across various Lua modules. And this file will be mostly dealing with
 -- importing all those modules.
 
-
-require "plugins"
-require "keys"
-require "ui"
-require "vars"
+require("ui")
+require("plugins")
+require("keys")
+require("vars")
 
 -- only for neovide
-require "ui/neovide"
+require("ui/neovide")
