@@ -27,6 +27,10 @@ Lib.vnoremap({
 	["<Leader>d"] = '"+d<CR>',
 	["<Leader>p"] = '"+p<CR>',
 
+	-- move lines
+	["JJ"] = ':move\'>+<cr>gv',
+	["KK"] = ':move-2<cr>gv',
+
 	-- quit vi
 	["<C-q>"] = "<Esc>:confirm qa<CR>",
 })
@@ -65,9 +69,9 @@ Lib.nnoremap({
 	["<Leader>wH"] = "<C-w>H",
 	["<Leader>wK"] = "<C-w>K",
 
-	-- quick blank lines
-	["<Leader>o"] = "o<Esc>k",
-	["<Leader>O"] = "O<Esc>j",
+	-- move lines
+	["JJ"] = ":move+<CR>",
+	["KK"] = ":move-2<CR>",
 
 	-- Other file ops
 	["<Leader>fn"] = ":enew<CR>",
