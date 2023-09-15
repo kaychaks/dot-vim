@@ -15,7 +15,6 @@ vim.go.wrap = false
 vim.go.joinspaces = false
 vim.go.signcolumn = "yes"
 vim.wo.signcolumn = "yes"
-vim.cmd("colorscheme base16-atelier-dune")
 vim.g.base16colorspace = 256
 vim.go.t_Co = 256
 vim.go.termguicolors = true

@@ -109,29 +109,7 @@ require("packer").startup(function(use)
 	use({
 		"glepnir/lspsaga.nvim",
 		config = function()
-			local saga = require("lspsaga")
-			local Lib = require("lib")
-
-			saga.init_lsp_saga({
-				server_filetype_map = {
-					typescript = "typescript",
-				},
-			})
-
-			Lib.nnoremap({
-				["K"] = "<Cmd>Lspsaga hover_doc<CR>",
-				["gd"] = "<Cmd>Lspsaga lsp_finder<CR>",
-				["<C-j>"] = "<Cmd>Lspsaga diagnostic_jump_next<CR>",
-				["gp"] = "<Cmd>Lspsaga peek_definition<CR>",
-				["gr"] = "<Cmd>Lspsaga rename<CR>",
-				["<Leader>ca"] = "<Cmd>Lspsaga code_action<CR>",
-				["<Leader>@"] = "<Cmd>LSoutlineToggle<CR>",
-				["<Leader>gg"] = "<cmd>Lspsaga open_floaterm lazygit<CR>",
-			})
-
-			Lib.tnoremap({
-				["<C-t>"] = [[<C-\\><C-n><cmd>Lspsaga close_floaterm<CR>]],
-			})
+			require("lang/plugins_setup/lspsaga")
 		end,
 	})
 
@@ -146,10 +124,15 @@ require("packer").startup(function(use)
 	})
 
 	-- color scheme
-	use("RRethy/nvim-base16")
+	use({
+		"RRethy/nvim-base16",
+		config = function()
+			require("ui/plugins_setup/base16")
+		end,
+	})
 
 	-- UI
-	
+
 	-- commenting
 	use("tpope/vim-commentary")
 
@@ -160,9 +143,7 @@ require("packer").startup(function(use)
 	use({
 		"windwp/nvim-autopairs",
 		config = function()
-			require("nvim-autopairs").setup({
-				disable_filetype = { "vim" },
-			})
+			require("ui/plugins_setup/autopairs")
 		end,
 	})
 
@@ -177,7 +158,7 @@ require("packer").startup(function(use)
 	-- tabs & buffers
 	use({
 		"akinsho/bufferline.nvim",
-		tag = "v2.*",
+		tag = "v3.*",
 		requires = {
 			"kyazdani42/nvim-web-devicons", -- optional, for file icons
 		},
@@ -191,7 +172,7 @@ require("packer").startup(function(use)
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require("colorizer").setup({ "*" })
+			require("ui/plugins_setup/colorizer")
 		end,
 	})
 
@@ -238,13 +219,7 @@ require("packer").startup(function(use)
 	use({
 		"dinhhuy258/git.nvim",
 		config = function()
-			require("git").setup({
-				keymaps = {
-					blame = "<Leader>gb",
-					quit_blame = "q",
-					blame_commit = "<CR>",
-				},
-			})
+			require("ui/plugins_setup/git")
 		end,
 	})
 
@@ -264,27 +239,7 @@ require("packer").startup(function(use)
 	use({
 		"onsails/lspkind.nvim",
 		config = function()
-			require("lspkind").init({
-				mode = "symbol",
-				symbol_map = {
-					Array = "",
-					Boolean = "⊨",
-					Class = "",
-					Constructor = "",
-					Key = "",
-					Namespace = "",
-					Null = "NULL",
-					Number = "#",
-					Object = "⦿",
-					Package = "",
-					Property = "",
-					Reference = "",
-					Snippet = "",
-					String = "𝓐",
-					TypeParameter = "",
-					Unit = "",
-				},
-			})
+			require("ui/plugins_setup/lspkind")
 		end,
 	})
 

@@ -2,9 +2,10 @@ local Lib = require("lib")
 
 require("bufferline").setup({
 	options = {
+		mode = "tabs",
 		diagnostics = "nvim_lsp",
 		indicator = { style = "underline" },
-		separator_style = "padded_slant",
+		separator_style = "slant",
 	},
 })
 

@@ -7,11 +7,13 @@ require("lualine").setup({
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { { "branch", separator = "" }, "diff" },
-		lualine_c = { {
-      "filename",
-      file_status = true, -- displays file status (readonly status, modified status)
-      path = 0 -- 0 = just filename, 1 = relative path, 2 = absolute path
-    } },
+		lualine_c = {
+			{
+				"filename",
+				file_status = true, -- displays file status (readonly status, modified status)
+				path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+			},
+		},
 		lualine_x = {
 			{
 				"diagnostics",
@@ -29,15 +31,17 @@ require("lualine").setup({
 	inactive_sections = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { {
-      "filename",
-      file_status = true, -- displays file status (readonly status, modified status)
-      path = 1 -- 0 = just filename, 1 = relative path, 2 = absolute path
-    } },
+		lualine_c = {
+			{
+				"filename",
+				file_status = true, -- displays file status (readonly status, modified status)
+				path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+			},
+		},
 		lualine_x = { "location" },
 		lualine_y = {},
 		lualine_z = {},
 	},
-  tabline = {},
-  extensions = { 'fugitive' }
+	tabline = {},
+	extensions = { "fugitive" },
 })

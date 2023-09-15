@@ -71,6 +71,7 @@ Lib.nnoremap({
 
 	-- FZF functions
 	["<Leader>f"] = ":GitFiles<CR>",
+	["<Leader>ft"] = "<C-T>:GitFiles<CR>",
 	["<Leader>F"] = ":cd %:h<CR>:Files<CR>",
 	["<Leader>b"] = ":Buffers<CR>",
 	["<Leader>/"] = ":Rg<CR>",
