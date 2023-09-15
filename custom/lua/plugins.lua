@@ -253,6 +253,8 @@ require("packer").startup(function(use)
 	-- fuzzy finder
 	use("airblade/vim-rooter")
 
+	use("nvim-telescope/telescope-ui-select.nvim")
+
 	use({
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.0",
@@ -262,11 +264,28 @@ require("packer").startup(function(use)
 		end,
 	})
 
+
 	-- terminal
 	use({
 		"akinsho/toggleterm.nvim",
 		config = function()
-			require('ui/plugins_setup/toggleterm')
+			require("ui/plugins_setup/toggleterm")
+		end,
+	})
+
+	-- auto save
+	use({
+		"Pocco81/auto-save.nvim",
+		config = function()
+			require("auto-save").setup({})
+		end,
+	})
+
+	-- sessions
+	use({
+		"shatur/neovim-session-manager",
+		config = function()
+			require("session_manager").setup({})
 		end,
 	})
 end)

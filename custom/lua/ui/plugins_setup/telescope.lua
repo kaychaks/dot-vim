@@ -1,4 +1,5 @@
 local actions = require("telescope.actions")
+local layout = require("telescope.actions.layout")
 local Lib = require("lib")
 require("telescope").setup({
 	defaults = {
@@ -25,11 +26,15 @@ require("telescope").setup({
 				["<C-j>"] = actions.move_selection_next,
 				["<C-k>"] = actions.move_selection_previous,
 				["<C-q>"] = actions.close,
+				["<C-s>"] = layout.toggle_preview,
 			},
 		},
 	},
 	pickers = {},
 })
+
+-- load telescope extension
+require("telescope").load_extension("ui-select")
 
 -- mappings
 Lib.nnoremap({
@@ -81,5 +86,9 @@ Lib.nnoremap({
 
 	["<Leader>D"] = function()
 		require("telescope.builtin").diagnostics({})
+	end,
+
+	["gR"] = function()
+		require("telescope.builtin").lsp_references({})
 	end,
 })

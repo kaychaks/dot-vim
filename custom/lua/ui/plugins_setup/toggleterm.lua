@@ -10,7 +10,21 @@ end
 local Lib = require("lib")
 
 Lib.nnoremap({
+	-- show lg
 	["<Leader>gg"] = "<cmd>lua _lazygit_toggle()<CR>",
+	-- toggle term
 	["<A-d>"] = "<cmd>ToggleTerm<CR>",
+	-- neovide
 	["<D-d>"] = "<cmd>ToggleTerm<CR>",
+})
+
+Lib.tnoremap({
+	-- toggle term
+	["<A-d>"] = "<cmd>ToggleTerm<CR>",
+	-- neovide
+	["<D-d>"] = "<cmd>ToggleTerm<CR>",
+	-- go to editor
+	["<A-e>"] = "<C-\\><C-n><C-w><C-k>",
+	-- neovide
+	["<D-e>"] = "<C-\\><C-n><C-w><C-k>",
 })
