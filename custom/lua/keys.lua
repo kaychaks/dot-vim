@@ -47,6 +47,7 @@ Lib.nnoremap({
 	-- navigate buffer
 	["<Leader>]"] = ":bn<CR>",
 	["<Leader>["] = ":bp<CR>",
+	["ge"] = "G",
 
 	-- split window
 	["<Leader>\\"] = ":vsp<CR>:wincmd l<CR>",
@@ -64,21 +65,19 @@ Lib.nnoremap({
 	["<Leader>wH"] = "<C-w>H",
 	["<Leader>wK"] = "<C-w>K",
 
-	-- kill window
-	["<Leader>wq"] = "<C-w>q",
-
-	-- quick help
-	["<Leader>h"] = ":help ",
-
 	-- quick blank lines
 	["<Leader>o"] = "o<Esc>k",
 	["<Leader>O"] = "O<Esc>j",
 
 	-- FZF functions
-	["<Leader>ff"] = ":GFiles<CR>",
-	["<Leader>fa"] = ":Files<CR>",
-	["<Leader>bb"] = ":Buffers<CR>",
-	["<Leader>gs"] = ":Rg<CR>",
+	["<Leader>f"] = ":GitFiles<CR>",
+	["<Leader>F"] = ":cd %:h<CR>:Files<CR>",
+	["<Leader>b"] = ":Buffers<CR>",
+	["<Leader>/"] = ":Rg<CR>",
+	["<Leader>t"] = ":Tags<CR>",
+	["<Leader>m"] = ":Marks<CR>",
+	["<Leader>co"] = ":BCommits<CR>",
+	["<Leader>h"] = ":Helptags<CR>",
 
 	-- Other file ops
 	["<Leader>fn"] = ":enew<CR>",
@@ -96,4 +95,11 @@ Lib.nnoremap({
 
 	-- quit vim
 	["<C-q>"] = ":confirm qa<CR>",
+
+	-- increment/decrement
+	["+"] = "<C-a>",
+	["-"] = "<C-x>",
+
+	-- select all
+	["<C-a>"] = "gg<S-v>G",
 })

@@ -1,9 +1,12 @@
 -- settings related to user interface improvements
 
+vim.scriptencoding = "utf-8"
+
 vim.go.autoindent = true
 vim.go.timeoutlen = 500
 vim.go.encoding = "utf-8"
-vim.go.scrolloff = 2
+vim.go.fileencoding = "utf-8"
+vim.go.scrolloff = 10
 vim.go.showmode = false
 vim.go.number = true
 vim.wo.number = true
@@ -18,6 +21,9 @@ vim.go.t_Co = 256
 vim.go.termguicolors = true
 vim.go.background = "dark"
 vim.go.guicursor = "n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor"
+
+vim.go.title = true
+vim.go.hlsearch = true
 
 -- completion menu
 vim.go.wildmenu = true
@@ -37,9 +43,10 @@ vim.go.synmaxcol = 500
 vim.go.laststatus = 2
 vim.go.colorcolumn = 80
 vim.go.showcmd = true
+vim.go.cmdheight = 1
 vim.go.mouse = "a"
 
-vim.go.inccommand = "nosplit"
+vim.go.inccommand = "split"
 vim.go.syntax = true
 
 -- https://github.com/jonhoo/configs/blob/master/editor/.config/nvim/init.vim#L318
@@ -57,8 +64,31 @@ vim.go.smartcase = true
 -- auto save
 vim.go.autowriteall = true
 
--- fonts
-vim.g.gui_font_default_size = 16
-vim.g.gui_font_size = vim.g.gui_font_default_size
-vim.g.gui_font_face = "PragmataPro Liga"
-vim.go.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
+-- shell
+vim.go.shell = 'fish'
+
+-- smart indent
+vim.go.breakindent = true
+
+-- go down to subfolders when finding files
+vim.go.path = '**'
+
+-- highlights
+vim.go.cursorline = true
+vim.go.winblend = 0
+vim.go.wildoptions = "pum"
+vim.go.pumblend = 5
+
+-- highlight yanked text for 200ms using the "Visual" highlight group
+--vim.cmd [[
+  --augroup highlight_yank
+  --autocmd!
+  --au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
+  --augroup END
+--]]
+
+-- copy text to gloal clipboard
+vim.opt.clipboard:append { 'unnamedplus' }
+
+-- Add asterisks in block comments
+vim.opt.formatoptions:append('r')

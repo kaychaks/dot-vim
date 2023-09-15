@@ -1,37 +1,12 @@
--- common configurations from language perspective
-
-require("lang/diagnostics")
-
--- tree-sitter
-require("nvim-treesitter.configs").setup({
-	ensure_installed = {
-		"lua",
-		"rust",
-		"javascript",
-		"fish",
-		"json",
-		"markdown",
-		"latex",
-		"typescript",
-		"tsx",
-		"toml",
-		"yaml",
-	},
-	auto_install = true,
-	highlight = {
-		enable = true,
-	},
-})
-
 --null-ls
 local Util = require("lang/util")
 local null_ls = require("null-ls")
 local sources = {
 	-- js/ts/css
-	null_ls.builtins.formatting.prettier,
-	null_ls.builtins.code_actions.eslint,
-	null_ls.builtins.diagnostics.eslint,
-	null_ls.builtins.diagnostics.tsc,
+	null_ls.builtins.formatting.prettierd,
+	null_ls.builtins.diagnostics.eslint_d.with({
+		diagnostics_format = "[eslint] #{m}\n(#{c})",
+	}),
 
 	-- lua
 	null_ls.builtins.formatting.stylua,
