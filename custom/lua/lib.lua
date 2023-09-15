@@ -61,4 +61,11 @@ function Lib.tnoremap(keys)
 end
 
 
+function Lib.xnoremap(keys)
+	for key, value in pairs(keys) do
+		noremap("x", key, value)
+	end
+end
+
+
 return Lib

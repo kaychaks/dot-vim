@@ -1,5 +1,9 @@
 -- settings related to user interface improvements
- 
+
+-- leaders
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -59,6 +63,7 @@ vim.go.splitright = true
 vim.go.splitbelow = true
 
 vim.go.undofile = true
+vim.go.undolevels = 10000
 
 vim.go.incsearch = true
 vim.go.ignorecase = true
@@ -80,7 +85,8 @@ vim.go.path = "**"
 vim.go.cursorline = true
 vim.go.winblend = 0
 vim.go.wildoptions = "pum"
-vim.go.pumblend = 5
+vim.go.pumblend = 10
+vim.go.pumheight = 10
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
@@ -95,3 +101,20 @@ vim.opt.clipboard:append({ "unnamedplus" })
 
 -- Add asterisks in block comments
 vim.opt.formatoptions:append("r")
+
+-- hide * markup for bold and italic
+vim.go.conceallevel = 3
+
+-- confirm before exiting modified buffer
+vim.go.confirm = true
+
+-- round indent
+vim.go.shiftround = true
+-- size of an indent
+vim.go.shiftwidth = 2
+-- don't show mode since we have statusline
+vim.go.showmode = false
+-- save swap file and trigger cursorhold
+vim.go.updatetime = 200
+-- minimum window width
+vim.go.winminwidth = 5

@@ -1,3 +1,3 @@
-require("nvim-autopairs").setup({
-	disable_filetype = { "vim" },
-})
+-- require("nvim-autopairs").setup({
+-- 	disable_filetype = { "vim" },
+-- })

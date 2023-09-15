@@ -10,14 +10,22 @@ g.mapleader = " "
 
 Lib.inoremap({
 
+	-- clear search with esc
+	["<esc>"] = "<cmd>noh<cr><esc>",
+
 	-- quick escape
-	["jk"] = "<Esc>",
+	["jk"] = "<cmd>noh<cr><esc>",
 
 	-- quick save
 	["<C-s>"] = "<Esc>:w<CR>a",
 
 	-- quit vi
 	["<C-q>"] = "<Esc>:confirm qa<CR>",
+
+	-- add undo breakpoints
+	[","] = ",<c-g>u",
+	[";"] = ";<c-g>u",
+	["."] = ".<c-g>u",
 })
 
 Lib.vnoremap({
@@ -28,30 +36,44 @@ Lib.vnoremap({
 	["<Leader>p"] = '"+p<CR>',
 
 	-- move lines
-	["JJ"] = ':move\'>+<cr>gv',
-	["KK"] = ':move-2<cr>gv',
+	["JJ"] = "m '>+1<cr>gv=gv",
+	["KK"] = ":m '<-2<cr>gv=gv",
 
 	-- quit vi
 	["<C-q>"] = "<Esc>:confirm qa<CR>",
+
+	-- better indenting
+	[">"] = ">gv",
+	["<"] = "<gv",
 })
 
 Lib.nnoremap({
+
+	-- clear search with esc
+	["<esc>"] = "<cmd>noh<cr><esc>",
+
+	-- better up/down
+	["j"] = { "v:count == 0 ? 'gj' : 'j'", { expr = true } },
+	["k"] = { "v:count == 0 ? 'gk' : 'k'", { expr = true } },
+
 	-- quick save
 	["<Leader>s"] = ":w<CR>",
 
 	-- kill buffer
-	["<Leader>q"] = ":Bdelete<CR>",
+	-- ["<Leader>q"] = ":Bdelete<CR>",
 
 	-- reload
 	["<Leader>r"] = ":source %<CR>",
 
 	-- quick load last buffer
-	["<Leader><Leader>"] = ":b#<CR>",
+	["<Leader><Leader>"] = "<cmd>e #<CR>",
 
 	-- navigate buffer
 	["<Leader>]"] = ":bn<CR>",
 	["<Leader>["] = ":bp<CR>",
 	["ge"] = "G",
+
+	["gw"] = "*N",
 
 	-- split window
 	["<Leader>\\"] = ":vsp<CR>:wincmd l<CR>",
@@ -69,12 +91,17 @@ Lib.nnoremap({
 	["<Leader>wH"] = "<C-w>H",
 	["<Leader>wK"] = "<C-w>K",
 
+
+	["<Leader>wd"] = "<C-w>c",
+
 	-- move lines
-	["JJ"] = ":move+<CR>",
-	["KK"] = ":move-2<CR>",
+	["JJ"] = ":m .+1<cr>==",
+	["KK"] = ":m .-2<cr>==",
 
 	-- Other file ops
-	["<Leader>fn"] = ":enew<CR>",
+	
+	-- new file
+	["<Leader>fn"] = "<cmd>enew<CR>",
 
 	-- clipboard
 	["<Leader>p"] = '"+p<CR>',
@@ -93,5 +120,9 @@ Lib.nnoremap({
 	["<C-a>"] = "gg<S-v>G",
 
 	-- open nvim config in a separate tab
-	["<Leader>oc"] = ":tabfind ~/.config/nvim/init.lua<CR>"
+	["<Leader>oc"] = ":tabfind ~/.config/nvim/init.lua<CR>",
+})
+
+Lib.xnoremap({
+	["gw"] = "*N",
 })

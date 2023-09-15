@@ -10,6 +10,7 @@
 -- importing all those modules.
 
 require("ui")
+require("autocmds")
 require("plugins")
 require("keys")
 require("vars")
