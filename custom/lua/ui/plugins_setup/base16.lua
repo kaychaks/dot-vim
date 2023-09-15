@@ -1,2 +1,2 @@
 -- setup for RRethy/nvim-base16
-vim.cmd("colorscheme base16-tomorrow-night")
+vim.cmd("colorscheme base16-gruvbox-dark-pale")

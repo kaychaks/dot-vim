@@ -107,4 +107,11 @@ require("mason-lspconfig").setup_handlers({
 			on_attach = Util.on_attach,
 		})
 	end,
+
+	["astro"] = function()
+		nvim_lsp["astro"].setup({
+			capabilities = capabilities,
+			on_attach = Util.on_attach,
+		})
+	end,
 })

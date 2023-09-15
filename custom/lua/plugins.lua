@@ -192,6 +192,14 @@ require("packer").startup(function(use)
 
 	use("famiu/bufdelete.nvim")
 
+	-- buffers belongs to tabs
+	use({
+		"tiagovla/scope.nvim",
+		config = function()
+			require("scope").setup()
+		end,
+	})
+
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
@@ -210,6 +218,9 @@ require("packer").startup(function(use)
 			require("ui/plugins_setup/nvim-tree")
 		end,
 	})
+
+	-- broot, a better terminal file manager
+	use({ "lstwn/broot.vim", config = function() end })
 
 	-- indentation guide
 	use("lukas-reineke/indent-blankline.nvim")
