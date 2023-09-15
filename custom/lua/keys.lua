@@ -64,6 +64,9 @@ Lib.nnoremap({
 	["<Leader>wH"] = "<C-w>H",
 	["<Leader>wK"] = "<C-w>K",
 
+	-- kill window
+	["<Leader>wq"] = "<C-w>q",
+
 	-- quick help
 	["<Leader>h"] = ":help ",
 
@@ -72,12 +75,24 @@ Lib.nnoremap({
 	["<Leader>O"] = "O<Esc>j",
 
 	-- FZF functions
-	["<Leader>ff"] = ":Files<CR>",
+	["<Leader>ff"] = ":GFiles<CR>",
+	["<Leader>fa"] = ":Files<CR>",
 	["<Leader>bb"] = ":Buffers<CR>",
 	["<Leader>gs"] = ":Rg<CR>",
 
+	-- Other file ops
+	["<Leader>fn"] = ":enew<CR>",
+
 	-- clipboard
 	["<Leader>p"] = '"+p<CR>',
+
+	-- clear highlight
+	["<Leader>hc"] = "<cmd>nohlsearch<cr>",
+
+	-- session manager
+	["<leader>Ss"] = "<cmd>SessionManager! save_current_session<cr>",
+	["<leader>Sl"] = "<cmd>SessionManager! load_last_session<cr>",
+	["<leader>S."] = "<cmd>SessionManager! load_current_dir_session<cr>",
 
 	-- quit vim
 	["<C-q>"] = ":confirm qa<CR>",

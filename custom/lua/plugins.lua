@@ -71,6 +71,7 @@ require("packer").startup(function(use)
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },
 	})
 
+	-- treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
 		run = function()
@@ -78,11 +79,32 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- session manager
+
+	use({
+		"Shatur/neovim-session-manager",
+		config = function()
+			require("session_manager").setup()
+		end,
+		event = "BufWritePost",
+		cmd = "SessionManager",
+		module = "session_manager",
+	})
+
 	-- git
 	use({ "tpope/vim-fugitive" })
 	use({ "tpope/vim-rhubarb", requires = { "tpope/vim-fugitive" } })
 
 	use("lewis6991/gitsigns.nvim")
+
+	-- gutter
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({})
+		end,
+	})
 
 	-- lsp
 	use({
@@ -99,6 +121,52 @@ require("packer").startup(function(use)
 		requires = {
 			"nvim-lua/plenary.nvim",
 		},
+	})
+
+	-- completion
+
+	use({
+		"onsails/lspkind.nvim",
+		config = function()
+			require("lspkind").init({
+				mode = "symbol",
+				symbol_map = {
+					Array = "",
+					Boolean = "⊨",
+					Class = "",
+					Constructor = "",
+					Key = "",
+					Namespace = "",
+					Null = "NULL",
+					Number = "#",
+					Object = "⦿",
+					Package = "",
+					Property = "",
+					Reference = "",
+					Snippet = "",
+					String = "𝓐",
+					TypeParameter = "",
+					Unit = "",
+				},
+			})
+		end,
+	})
+
+	use("hrsh7th/nvim-cmp", {
+		event = "InsertEnter",
+		after = "lspkind"
+	})
+
+	use("hrsh7th/cmp-buffer", {
+		after = "nvim-cmp",
+	})
+
+	use("hrsh7th/cmp-path", {
+		after = "nvim-cmp",
+	})
+
+	use("hrsh7th/cmp-path", {
+		after = "nvim-cmp",
 	})
 
 	-- fuzzy finder
