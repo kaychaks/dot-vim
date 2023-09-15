@@ -88,11 +88,6 @@ Lib.nnoremap({
 	-- clear highlight
 	["<Leader>hc"] = "<cmd>nohlsearch<cr>",
 
-	-- session manager
-	["<leader>Ss"] = "<cmd>SessionManager! save_current_session<cr>",
-	["<leader>Sl"] = "<cmd>SessionManager! load_last_session<cr>",
-	["<leader>S."] = "<cmd>SessionManager! load_current_dir_session<cr>",
-
 	-- quit vim
 	["<C-q>"] = ":confirm qa<CR>",
 

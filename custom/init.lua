@@ -14,12 +14,6 @@ require "plugins"
 require "keys"
 require "ui"
 require "vars"
-require "opts"
 
--- lang settings
-require "lang/common"
-require "lang/rust"
-
--- other
-require "tabs"
-require "ui/filetree"
+-- only for neovide
+require "ui/neovide"

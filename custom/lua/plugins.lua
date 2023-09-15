@@ -62,15 +62,13 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-cmdline")
+
 	use({
 		"hrsh7th/nvim-cmp",
-		requires = {
-			"onsails/lspkind-nvim",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-		},
 		config = function()
 			require("ui/plugins_setup/cmp")
 
@@ -79,6 +77,32 @@ require("packer").startup(function(use)
 				highlight! default link CmpItemKind CmpItemMenuDefault
 			]])
 		end,
+	})
+
+	use("hrsh7th/cmp-nvim-lsp-signature-help", {
+		after = "nvim-cmp",
+	})
+
+	use("hrsh7th/cmp-nvim-lsp-document-symbol", {
+		after = "nvim-cmp",
+	})
+
+	use({
+		"saecki/crates.nvim",
+		tag = "v0.2.1",
+		requires = { "nvim-lua/plenary.nvim" },
+		config = function()
+			require("crates").setup()
+		end,
+		after = "nvim-cmp",
+	})
+
+	use({
+		"David-Kunz/cmp-npm",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+		after = "nvim-cmp",
 	})
 
 	-- lsp uis
@@ -108,6 +132,16 @@ require("packer").startup(function(use)
 			Lib.tnoremap({
 				["<C-t>"] = [[<C-\\><C-n><cmd>Lspsaga close_floaterm<CR>]],
 			})
+		end,
+	})
+
+	-- diagnostics
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup()
+			require("lang/diagnostics")
 		end,
 	})
 
@@ -193,23 +227,9 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- session manager
-
-	use({
-		"Shatur/neovim-session-manager",
-		config = function()
-			require("session_manager").setup()
-		end,
-		event = "BufWritePost",
-		cmd = "SessionManager",
-		module = "session_manager",
-	})
-
 	-- git
 	use("tpope/vim-fugitive")
 	use({ "tpope/vim-rhubarb", requires = { "tpope/vim-fugitive" } })
-
-	use("lewis6991/gitsigns.nvim")
 
 	-- lsp
 	use({
@@ -249,56 +269,6 @@ require("packer").startup(function(use)
 				},
 			})
 		end,
-	})
-
-	use("hrsh7th/nvim-cmp", {
-		event = "InsertEnter",
-		after = "lspkind",
-		requires = {
-			{ "kdheepak/cmp-latex-symbols" },
-		},
-	})
-
-	use("hrsh7th/cmp-buffer", {
-		after = "nvim-cmp",
-	})
-
-	use("hrsh7th/cmp-path", {
-		after = "nvim-cmp",
-	})
-
-	use("hrsh7th/cmp-nvim-lua", {
-		after = "nvim-cmp",
-	})
-
-	use("hrsh7th/cmp-nvim-lsp", {
-		after = "nvim-cmp",
-	})
-
-	use("hrsh7th/cmp-nvim-lsp-signature-help", {
-		after = "nvim-cmp",
-	})
-
-	use("hrsh7th/cmp-nvim-lsp-document-symbol", {
-		after = "nvim-cmp",
-	})
-
-	use({
-		"saecki/crates.nvim",
-		tag = "v0.2.1",
-		requires = { "nvim-lua/plenary.nvim" },
-		config = function()
-			require("crates").setup()
-		end,
-		after = "nvim-cmp",
-	})
-
-	use({
-		"David-Kunz/cmp-npm",
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-		after = "nvim-cmp",
 	})
 
 	-- fuzzy finder
