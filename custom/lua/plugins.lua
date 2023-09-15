@@ -261,4 +261,12 @@ require("packer").startup(function(use)
 			require("ui/plugins_setup/telescope")
 		end,
 	})
+
+	-- terminal
+	use({
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require('ui/plugins_setup/toggleterm')
+		end,
+	})
 end)
