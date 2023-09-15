@@ -264,7 +264,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-
 	-- terminal
 	use({
 		"akinsho/toggleterm.nvim",
@@ -285,9 +284,7 @@ require("packer").startup(function(use)
 	use({
 		"shatur/neovim-session-manager",
 		config = function()
-			require("session_manager").setup({
-				autoload_mode = require('session_manager.config').AutoloadMode.CurrentDir
-			})
+			require("ui/plugins_setup/session_manager")
 		end,
 	})
 

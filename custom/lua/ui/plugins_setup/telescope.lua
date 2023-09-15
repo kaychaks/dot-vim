@@ -61,7 +61,7 @@ Lib.nnoremap({
 	end,
 
 	["<Leader>b"] = function()
-		require("telescope.builtin").buffers({})
+		require("telescope.builtin").buffers({ only_cwd = true })
 	end,
 
 	["<Leader>m"] = function()

@@ -87,4 +87,7 @@ Lib.nnoremap({
 
 	-- select all
 	["<C-a>"] = "gg<S-v>G",
+
+	-- open nvim config in a separate tab
+	["<Leader>oc"] = ":tabfind ~/.config/nvim/init.lua<CR>"
 })
