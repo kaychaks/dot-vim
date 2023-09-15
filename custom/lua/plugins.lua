@@ -120,6 +120,14 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- language bindings without lsp
+	use {
+		"sheerun/vim-polyglot",
+		config = function ()
+			-- vim.go.polyglot_disabled = [ 'sensible' ]
+		end
+	}
+
 	-- diagnostics
 	use({
 		"folke/trouble.nvim",
@@ -145,6 +153,12 @@ require("packer").startup(function(use)
 
 	-- sorround
 	use("tpope/vim-surround")
+
+	-- all magic with [ adn ]
+	use("tpope/vim-unimpaired")
+
+	-- better repeat
+	use("tpope/vim-repeat")
 
 	-- autopairs
 	use({
@@ -230,7 +244,6 @@ require("packer").startup(function(use)
 		end,
 	})
 
-	-- lsp
 	use({
 		"lewis6991/gitsigns.nvim",
 		config = function()
