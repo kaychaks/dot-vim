@@ -48,8 +48,10 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- nix
 	use("LnL7/vim-nix")
 
+	-- formatting
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = {
@@ -121,12 +123,12 @@ require("packer").startup(function(use)
 	})
 
 	-- language bindings without lsp
-	use {
+	use({
 		"sheerun/vim-polyglot",
-		config = function ()
+		config = function()
 			-- vim.go.polyglot_disabled = [ 'sensible' ]
-		end
-	}
+		end,
+	})
 
 	-- diagnostics
 	use({

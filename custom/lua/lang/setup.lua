@@ -92,4 +92,19 @@ require("mason-lspconfig").setup_handlers({
 			},
 		})
 	end,
+
+	["emmet_ls"] = function()
+		nvim_lsp["emmet_ls"].setup({
+			capabilities = capabilities,
+			on_attach = Util.on_attach,
+			filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+		})
+	end,
+
+	["svelte"] = function()
+		nvim_lsp["svelte"].setup({
+			capabilities = capabilities,
+			on_attach = Util.on_attach,
+		})
+	end,
 })
