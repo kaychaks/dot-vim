@@ -28,4 +28,5 @@ require "lang/lua"
 -- other
 require "tabs"
 require "ui/filetree"
+require "ui/neovide"
 require "completion"

@@ -48,4 +48,13 @@ function Util.on_attach(client, buffnr, no_formatting)
 	end
 end
 
+local function mk_capabilities()
+	local capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+end
+
+function Util.capabilities()
+	return mk_capabilities()
+end
+
 return Util

@@ -56,3 +56,9 @@ vim.go.smartcase = true
 
 -- auto save
 vim.go.autowriteall = true
+
+-- fonts
+vim.g.gui_font_default_size = 16
+vim.g.gui_font_size = vim.g.gui_font_default_size
+vim.g.gui_font_face = "PragmataPro Liga"
+vim.go.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)

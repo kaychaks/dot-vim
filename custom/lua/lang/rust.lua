@@ -8,5 +8,6 @@ rt.setup({
 	-- nvim-lspconfig settings
 	server = {
 		on_attach = Util.on_attach,
+		capabilities = Util.capabilities(),
 	},
 })
