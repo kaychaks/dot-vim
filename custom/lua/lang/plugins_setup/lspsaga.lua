@@ -14,7 +14,7 @@ Lib.nnoremap({
 	["gp"] = "<Cmd>Lspsaga peek_definition<CR>",
 	["gr"] = "<Cmd>Lspsaga rename<CR>",
 	["<Leader>ca"] = "<Cmd>Lspsaga code_action<CR>",
-	["<Leader>@"] = "<Cmd>LSoutlineToggle<CR>",
+	["<Leader>@"] = "<Cmd>Lspsaga outline<CR>",
 	["<Leader>gg"] = "<cmd>Lspsaga open_floaterm lazygit<CR>",
 })
 

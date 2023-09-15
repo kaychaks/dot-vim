@@ -1,16 +1,3 @@
--- fzf locations would change for linux and mac
-local function fzf_by_os()
-	local os = vim.loop.os_uname().sysname
-
-	if string.lower(os) == "linux" then
-		return "~/.nix-profile/share/vim-plugins/fzf"
-	elseif string.lower(os) == "darwin" then
-		return "/usr/local/Cellar/fzf/0.35.1"
-	else
-		return ""
-	end
-end
-
 local status, packer = pcall(require, "packer")
 if not status then
 	print("Packer is not installed")
@@ -31,7 +18,7 @@ require("packer").startup(function(use)
 	-- lsp
 	use({
 		"williamboman/mason-lspconfig.nvim",
-		requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+		requires = { "williamboman/mason.nvim", "neovim/nvim-lspconfig", "hrsh7th/cmp-nvim-lsp" },
 		config = function()
 			require("mason-lspconfig").setup({
 				automatic_installation = true,
@@ -40,7 +27,26 @@ require("packer").startup(function(use)
 		end,
 	})
 
+	-- rust specific lsp configs
 	use("simrat39/rust-tools.nvim")
+
+	-- typescript specific lsp configs
+	use({
+		"jose-elias-alvarez/typescript.nvim",
+		requires = { "williamboman/mason-lspconfig.nvim", "hrsh7th/cmp-nvim-lsp" },
+		config = function()
+			local Util = require("lang/util")
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			require("typescript").setup({
+				server = {
+					on_attach = Util.on_attach,
+					filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+					cmd = { "typescript-language-server", "--stdio" },
+					capabilities = capabilities,
+				},
+			})
+		end,
+	})
 
 	use("LnL7/vim-nix")
 
@@ -48,6 +54,7 @@ require("packer").startup(function(use)
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
+			"jose-elias-alvarez/typescript.nvim",
 		},
 		config = function()
 			require("ui/plugins_setup/null-ls")
@@ -246,7 +253,12 @@ require("packer").startup(function(use)
 	-- fuzzy finder
 	use("airblade/vim-rooter")
 
-	use({ fzf_by_os() })
-
-	use("junegunn/fzf.vim")
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.0",
+		requires = { { "nvim-lua/plenary.nvim" } },
+		config = function()
+			require("ui/plugins_setup/telescope")
+		end,
+	})
 end)

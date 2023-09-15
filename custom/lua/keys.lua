@@ -69,17 +69,6 @@ Lib.nnoremap({
 	["<Leader>o"] = "o<Esc>k",
 	["<Leader>O"] = "O<Esc>j",
 
-	-- FZF functions
-	["<Leader>f"] = ":GitFiles<CR>",
-	["<Leader>ft"] = "<C-T>:GitFiles<CR>",
-	["<Leader>F"] = ":cd %:h<CR>:Files<CR>",
-	["<Leader>b"] = ":Buffers<CR>",
-	["<Leader>/"] = ":Rg<CR>",
-	["<Leader>t"] = ":Tags<CR>",
-	["<Leader>m"] = ":Marks<CR>",
-	["<Leader>co"] = ":BCommits<CR>",
-	["<Leader>h"] = ":Helptags<CR>",
-
 	-- Other file ops
 	["<Leader>fn"] = ":enew<CR>",
 

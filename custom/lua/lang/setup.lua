@@ -56,14 +56,14 @@ require("mason-lspconfig").setup_handlers({
 		})
 	end,
 
-	["tsserver"] = function()
-		nvim_lsp["tsserver"].setup({
-			on_attach = Util.on_attach,
-			filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-			cmd = { "typescript-language-server", "--stdio" },
-			capabilities = capabilities,
-		})
-	end,
+	-- ["tsserver"] = function()
+	-- 	nvim_lsp["tsserver"].setup({
+	-- 		on_attach = Util.on_attach,
+	-- 		filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+	-- 		cmd = { "typescript-language-server", "--stdio" },
+	-- 		capabilities = capabilities,
+	-- 	})
+	-- end,
 
 	["tailwindcss"] = function()
 		nvim_lsp["tailwindcss"].setup({
